@@ -3,7 +3,8 @@
 - there are many versions of a form
 - there are many questions in a form
 - users are asked to complete the questions in a single form
-- the questions are asked in order
+- a session is created when a user starts filling out a form and can be resumed later
+- the questions are asked in order until none remain
 - each question can have different response types such as text, yesno, single select, multiselect 
 - each question may have have an optional comments field enabled or not.
 - each answer must be recorded
