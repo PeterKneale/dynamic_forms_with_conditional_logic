@@ -1,0 +1,14 @@
+@{
+    Layout = "_Layout";
+}
+<div class="page">
+    <partial name="_PageNavbar"/>
+    <div class="page-wrapper">
+        <partial name="_PageHeader"/>
+        <div class="page-body">
+            <div class="container-xl">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</div>

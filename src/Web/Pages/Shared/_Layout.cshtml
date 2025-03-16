@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>QANDA</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@@tabler/core@1.1.1/dist/css/tabler.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+</head>
+<body>
+
+@RenderBody()
+
+<script src="https://cdn.jsdelivr.net/npm/@@tabler/core@1.1.1/dist/js/tabler.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

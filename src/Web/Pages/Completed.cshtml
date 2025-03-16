@@ -1,0 +1,35 @@
+@page
+@using Core.Models
+@model Web.Pages.Completed
+
+<div class="row">
+    <div class="col-8">
+        <div class="card card-active">
+            <div class="card-body">
+                <p>Form Completed!</p>
+            </div>
+        </div>
+        <div class="card mt-2">
+            <div class="card-header">
+                <h3 class="card-title">Your Answers</h3>
+            </div>
+            <div class="list-group list-group-flush overflow-auto">
+                @foreach (var answer in Model.Answers)
+                {
+                    var question = Model.Form.Questions.Single(q => q.Id == answer.QuestionId);
+                    
+                    <div class="list-group-header sticky-top">@answer.QuestionId @question.TitleTemplate</div>
+                    <div class="list-group-item">
+                        <div class="row">
+                            <div class="col text-truncate">
+                                <a href="#" class="text-body d-block">@answer.Value</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+    </div>
+</div>

@@ -1,0 +1,81 @@
+﻿@page
+@using Core.Models
+@using Humanizer
+@model IndexModel
+@{
+  ViewData["Title"] = "Home page";
+}
+<div class="row row-cards">
+  @foreach (var form in Model.Forms)
+  {
+    <div class="col-3">
+      <div class="card card-sm">
+        <div class="card-header">
+          <div class="row align-items-center">
+            <div class="col-auto">
+              <span class="avatar avatar-1"><i class="@form.Icon"></i></span>
+            </div>
+            <div class="col">
+              <div class="card-title">@form.Id</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p>@form.Description</p>
+        </div>
+        <div class="list-group list-group-flush">
+          @foreach (var version in form.Versions)
+          {
+            <a asp-page="Start" asp-route-formid="@form.Id" asp-route-formversion="@version.Version"
+               class="list-group-item list-group-item-action">Version @version.Version</a>
+          }
+        </div>
+      </div>
+    </div>
+  }
+</div>
+
+<div class="row mt-2">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Sessions</h3>
+      </div>
+      <div class="list-group list-group-flush">
+        @foreach (var session in Model.Sessions)
+        {
+          var form = Model.Forms.Single(f => f.Id == session.FormId);
+          <div class="list-group-item">
+            <div class="row align-items-center">
+              <div class="col-auto">
+                @if (session.Status == Constants.SessionStatus.InProgress)
+                {
+                  <span class="badge bg-orange text-orange-fg">In Progress</span>  
+                }
+                @if (session.Status == Constants.SessionStatus.Completed)
+                {
+                  <span class="badge bg-green text-green-fg">Completed</span>
+                }
+                
+              </div>
+              <div class="col text-truncate">
+                <a asp-page="Question"
+                   asp-route-sessionId="@session.SessionId"
+                   class="text-reset d-block">
+                  @form.Id
+                </a>
+                <div class="d-block text-secondary text-truncate mt-n1">
+                  Started @session.StartedAt.Humanize()
+                  @if(session.UpdatedAt.HasValue)
+                  {
+                    <span class="text-secondary"> - Updated @session.UpdatedAt.Value.Humanize()</span>
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
