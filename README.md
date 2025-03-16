@@ -10,7 +10,7 @@
 - each answer must be recorded
 - each question has a title, body and help text
 - the title body and help text uses a templating engine so it can be customised based on the context
-- each question has dynamic criteria that determine whether a question is applicable or not.
+- each question has dynamic criteria that determine whether a question is applicable or not. The expression may refer to the answers given to previously asked questions or other information such as the users organisation or role. If a question is not applicable, it will proceed to the next question and check its applicability. 
 - The expression may refer to the answers given to previously asked questions or other information such as the users organisation or role
 
 # implementation
